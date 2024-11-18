@@ -23,10 +23,32 @@ export const getAddressById = async (id) => {
         throw new Error(error.message)
     }
 }
-export const createAddress = async () => {
+export const createAddress = async (body) => {
     try {
-        const data = await pool.query()
-        // INSERT INTODAN KEYIN RETURNING * ISHLATING
+        const data = await pool.query(
+            `insert into addresses(
+            user_id, 
+            title, 
+            address_line_1,
+            address_line_2, 
+            country,
+            city,
+            postal_code,
+            phone_number,
+            landmark)
+            values($1, $2, $3, $4, $5, $6, $7, $8,$9)RETURNING *`,
+            [
+                body.user_id,
+                body.title,
+                body.address_line_1,
+                body.address_line_2,
+                body.country,
+                body.city,
+                body.postal_code,
+                body.phone_number,
+                body.landmark,
+            ],
+        )
         if (!data.rows[0]) {
             throw new Error(`Addresses not created with some reason`)
         }
@@ -70,10 +92,13 @@ export const updateAddress = async (id, body) => {
         throw new Error(error.message)
     }
 }
-export const deleteAddress = async () => {
+export const deleteAddress = async (id) => {
     try {
-        const data = await pool.query()
-        // DELETE FROMDAN KEYIN RETURNING * ISHLATING
+        const data = await pool.query(
+            `DELETE FROM addresses WHERE id=$1 returning *`,
+            [id],
+        )
+
         if (!data.rows[0]) {
             throw new Error(`Addresses not deleted with some reason`)
         }

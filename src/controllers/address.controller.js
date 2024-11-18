@@ -2,9 +2,9 @@ import { logger } from '../utils/index.js'
 import {
     getAddresses,
     getAddressById,
-    // createAddress,
+    createAddress,
     updateAddress,
-    // deleteAddress,
+    deleteAddress,
 } from '../services/index.js'
 export async function getAllAddressesController(req, res, next) {
     try {
@@ -38,8 +38,13 @@ export async function getAddressByIdController(req, res, next) {
 }
 export async function createAddressController(req, res, next) {
     try {
+        const data = await createAddress(req.body)
+        if (!data) {
+            return res.send('NOT FOUND!!!')
+        }
         res.status(200).send({
             msg: 'CREATED',
+            data: data,
         })
     } catch (error) {
         next(error)
@@ -62,8 +67,10 @@ export async function updateAddressByIdController(req, res, next) {
 }
 export async function deleteAddressByIdController(req, res, next) {
     try {
+        const data = await deleteAddress(req.params.id)
         res.status(200).send({
             msg: 'DELETED',
+            data: data,
         })
     } catch (error) {
         next(error)
