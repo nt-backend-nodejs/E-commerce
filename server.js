@@ -11,4 +11,5 @@ const bootstrap = async () => {
         logger.error(error)
     }
 }
+
 bootstrap()
