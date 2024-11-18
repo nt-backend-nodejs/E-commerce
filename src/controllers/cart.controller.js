@@ -7,7 +7,7 @@ import {
     deleteCartService,
 } from '../services/index.js'
 import { cartSchema } from '../validators/index.js'
-export const gatAllCardItem = async (req, res, next) => {
+export const getAllCart = async (req, res, next) => {
     try {
         const allCardsItem = await getAllCartService()
         return res.status(200).send({ status: 'Success', data: allCardsItem })
@@ -17,7 +17,7 @@ export const gatAllCardItem = async (req, res, next) => {
     }
 }
 
-export const gatByIdCardItem = async (req, res, next) => {
+export const getByIdCart = async (req, res, next) => {
     try {
         const message = await getByIdCartService(req.params.id)
         if (message.status === 'NOTFOUND') {
@@ -30,10 +30,9 @@ export const gatByIdCardItem = async (req, res, next) => {
     }
 }
 
-export const createlCardItem = async (req, res, next) => {
+export const createCart = async (req, res, next) => {
     try {
-        alidateCart
-        const { error, value } = cartSchema(req.body)
+        const { error } = cartSchema(req.body)
         if (error) {
             return res.status(400).send({
                 status: error.message,
@@ -48,7 +47,7 @@ export const createlCardItem = async (req, res, next) => {
     }
 }
 
-export const updateCardItem = async (req, res, next) => {
+export const updateCart = async (req, res, next) => {
     try {
         const message = await updateCartService(req.params.id, req.body)
         if (message.status === 'NOTFOUND') {
@@ -62,7 +61,7 @@ export const updateCardItem = async (req, res, next) => {
     }
 }
 
-export const deleteCardItem = async (req, res, next) => {
+export const deleteCart = async (req, res, next) => {
     try {
         const message = await deleteCartService(req.params.id)
         if (message.status === 'NOTFOUND') {

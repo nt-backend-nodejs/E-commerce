@@ -1,4 +1,4 @@
-import pool from '../../database/index.js'
+import pool from '../../databases/index.js'
 import { logger } from '../../utils/index.js'
 
 export const createProducrsTable = async () => {

@@ -5,7 +5,7 @@ import {
     updateProductService,
     deleteProductService,
 } from '../services/index.js'
-import { cartSchema } from '../validators/index.js'
+import { productsSchema } from '../validators/index.js'
 export const getAllProducts = async (req, res, next) => {
     try {
         const allProducts = await getAllProductService()
@@ -21,7 +21,7 @@ export const getByIdProducts = async (req, res, next) => {
         if (message.status === 'NOTFOUND') {
             return res.status(404).send('Bunday Id li malumot topilmadi')
         }
-        return res.status(200).send({ ststus: 'Success', data: message.data })
+        return res.status(200).send({ ststus: message.data })
     } catch (error) {
         next(error)
     }
@@ -29,7 +29,7 @@ export const getByIdProducts = async (req, res, next) => {
 
 export const createProducts = async (req, res, next) => {
     try {
-        const { error, value } = cartSchema(req.body)
+        const { error, value } = productsSchema(req.body)
         if (error) {
             return res.status(400).send({
                 status: error.message,
@@ -57,7 +57,7 @@ export const updateProducts = async (req, res, next) => {
 
 export const deleteProducts = async (req, res, next) => {
     try {
-        const message = await deleteProductService()
+        const message = await deleteProductService(req.params.id)
         if (message.status === 'NOTFOUND') {
             return res.status(404).send('Bunday Id li malumot topilmadi')
         }
