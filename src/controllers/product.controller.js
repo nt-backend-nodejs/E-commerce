@@ -5,7 +5,7 @@ import {
     updateProductService,
     deleteProductService,
 } from '../services/index.js'
-import { validateProduct } from '../middlewares/index.js'
+import { cartSchema } from '../validators/index.js'
 export const getAllProducts = async (req, res, next) => {
     try {
         const allProducts = await getAllProductService()
@@ -29,7 +29,7 @@ export const getByIdProducts = async (req, res, next) => {
 
 export const createProducts = async (req, res, next) => {
     try {
-        const { error, value } = validateProduct(req.body)
+        const { error, value } = cartSchema(req.body)
         if (error) {
             return res.status(400).send({
                 status: error.message,

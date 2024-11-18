@@ -6,7 +6,7 @@ import {
     updateCartService,
     deleteCartService,
 } from '../services/index.js'
-import { alidateCart } from '../middlewares/index.js'
+import { cartSchema } from '../validators/index.js'
 export const gatAllCardItem = async (req, res, next) => {
     try {
         const allCardsItem = await getAllCartService()
@@ -32,7 +32,8 @@ export const gatByIdCardItem = async (req, res, next) => {
 
 export const createlCardItem = async (req, res, next) => {
     try {
-        const { error, value } = alidateCart(req.body)
+        alidateCart
+        const { error, value } = cartSchema(req.body)
         if (error) {
             return res.status(400).send({
                 status: error.message,
