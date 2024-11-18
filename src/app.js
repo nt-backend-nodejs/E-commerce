@@ -6,6 +6,7 @@ import {
   productRouter,
   social_ProfileRouter,
   userRouter,
+  whishlistrouter
 } from "./routes/index.js";
 import {
   createAddressTable,
@@ -26,6 +27,7 @@ app.use("/address", addressRouter);
 app.use("/social_profile", social_ProfileRouter);
 app.use("/category", categoryRouter);
 app.use("/product", productRouter);
+app.use("/whishlist", whishlistrouter);
 
 app.get("/api/v1/setup", async (req, res) => {
   await createUserTable();

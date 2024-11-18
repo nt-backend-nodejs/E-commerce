@@ -1,0 +1,2 @@
+[31m{"level":"error","timestamp":"2024-11-18T13:16:01.099Z"}[39m
+[31m{"level":"error","message":"SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string","timestamp":"2024-11-18T13:16:20.763Z"}[39m
