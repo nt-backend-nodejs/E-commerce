@@ -11,5 +11,5 @@ const bootstrap = async () => {
         logger.error(error)
     }
 }
-
+console.log("temur");
 bootstrap()
