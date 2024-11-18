@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import { createUserTable } from './schema/index.js'
-import { authRoutes } from './routes/index.js'
+import { authRoutes, ordersRouter, socialFilesRouter } from './routes/index.js'
 
 const app = express()
 
@@ -16,6 +16,8 @@ app.use(morgan('dev'))
 
 // auth
 app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/orders', ordersRouter)
+app.use('/api/v1/socialProfiles', socialFilesRouter)
 
 app.get('/api/v1/setup', async (req, res) => {
     await createUserTable()
