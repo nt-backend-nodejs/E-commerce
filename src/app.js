@@ -23,10 +23,19 @@ app.get('/api/v1/setup', async (req, res) => {
 })
 
 app.use((err, req, res, next) => {
+    logger.error('Error:', err)
+
     if (err) {
-        return res.send(err.message)
+        return res.status(err.statusCode || 400).json({
+            success: false,
+            message: err.message,
+        })
     }
-    return res.send('not found')
+
+    res.status(500).json({
+        success: false,
+        message: 'Internal Server Error',
+    })
 })
 
 export default app
