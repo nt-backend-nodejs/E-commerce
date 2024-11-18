@@ -2,7 +2,7 @@ import express from 'express'
 import morgan from 'morgan'
 import { createUserTable } from './schema/index.js'
 import { createReviewsTable } from './schema/reviews/reviews.schema.js'
-import { authRoutes, reviewRouter } from './routes/index.js'
+import { addressRouter, authRoutes, reviewRouter } from './routes/index.js'
 
 const app = express()
 
@@ -17,7 +17,8 @@ app.use(morgan('dev'))
 
 // auth
 app.use('/api/v1/auth', authRoutes)
-app.use('/ap1/v1/review', reviewRouter)
+app.use('/api/v1/review', reviewRouter)
+app.use('/api/v1/address', addressRouter)
 app.get('/api/v1/setup', async (req, res) => {
     await createReviewsTable()
     await createUserTable()
