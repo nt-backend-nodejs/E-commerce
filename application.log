@@ -1,2 +1,17 @@
 [31m{"level":"error","timestamp":"2024-11-18T13:16:01.099Z"}[39m
 [31m{"level":"error","message":"SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string","timestamp":"2024-11-18T13:16:20.763Z"}[39m
+[31m{"level":"error","message":"отношение \"users\" не существует","timestamp":"2024-11-18T16:19:16.966Z"}[39m
+[31m{"code":"42704","file":"parse_type.c","length":117,"level":"error","line":"274","name":"error","position":"182","routine":"typenameType","severity":"ОШИБКА","timestamp":"2024-11-18T16:19:42.111Z"}[39m
+[31m{"code":"42704","file":"parse_type.c","length":117,"level":"error","line":"274","name":"error","position":"182","routine":"typenameType","severity":"ОШИБКА","timestamp":"2024-11-18T16:20:21.897Z"}[39m
+[31m{"level":"error","message":"тип \"user_role\" не существует","timestamp":"2024-11-18T16:20:32.149Z"}[39m
+[31m{"level":"error","message":"тип \"user_role\" уже существует","timestamp":"2024-11-18T16:21:15.370Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-11-18T16:21:22.758Z"}[39m
+[31m{"level":"error","message":"отношение \"product\" не существует","timestamp":"2024-11-18T16:21:30.135Z"}[39m
+[31m{"level":"error","message":"отношение \"product\" не существует","timestamp":"2024-11-18T16:21:57.221Z"}[39m
+[31m{"code":"42P01","file":"namespace.c","length":136,"level":"error","line":"624","name":"error","routine":"RangeVarGetRelidExtended","severity":"ОШИБКА","timestamp":"2024-11-18T16:22:01.567Z"}[39m
+[31m{"level":"error","message":"отношение \"categories\" не существует","timestamp":"2024-11-18T16:22:12.909Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-11-18T16:22:40.521Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-11-18T16:22:47.791Z"}[39m
+[31m{"level":"error","message":"отношение \"product\" не существует","timestamp":"2024-11-18T16:22:54.085Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-11-18T16:23:10.579Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-11-18T16:23:18.969Z"}[39m

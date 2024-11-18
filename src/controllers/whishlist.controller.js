@@ -1,7 +1,9 @@
 import { logger } from "../utils/index.js";
+import {getallwhislists,getwhistbyid,createwhislist,updatewhislist,deletewhislist} from "../services/index.js"
 export const getAllwhishlist=async(req,res)=>{
     try {
-        res.status(200).send("ok")
+        const result=await getAllwhishlist()
+        res.status(200).send(result)
     } catch (error) {
         logger.error(error)
         res.status(400).send(error)
@@ -10,7 +12,9 @@ export const getAllwhishlist=async(req,res)=>{
 
 export const getwhishlistByid=async(req,res)=>{
     try {
-        res.status(200).send("ok")
+        const {id}=req.params
+        const result=await getwhistbyid(id)
+        res.status(200).send(result)
     } catch (error) {
         logger.error(error)
         res.status(400).send(error)
@@ -19,7 +23,9 @@ export const getwhishlistByid=async(req,res)=>{
 
 export const createWhishlist=async(req,res)=>{
     try {
-        res.status(200).send("ok")
+        const {user_id,product_id,create_at,update_at}=req.body
+        const result=await createwhislist({user_id,product_id,create_at,update_at})
+        res.status(200).send(result)
     } catch (error) {
         logger.error(error)
         res.status(400).send(error)
@@ -28,7 +34,10 @@ export const createWhishlist=async(req,res)=>{
 
 export const updateWhishlist=async(req,res)=>{
     try {
-        res.status(200).send("ok")
+        const {id}=req.params
+        const {user_id,product_id}=req.body
+        const result=await updatewhislist({id,user_id,product_id})
+        res.status(200).send(result)
     } catch (error) {
         logger.error(error)
         res.status(400).send(error)
@@ -37,7 +46,9 @@ export const updateWhishlist=async(req,res)=>{
 
 export const deleteWhishlist=async(req,res)=>{
     try {
-        res.status(200).send("ok")
+        const {id}=req.params
+        const result=await deletewhislist(id)
+        res.status(200).send(result)
     } catch (error) {
         logger.error(error)
         res.status(400).send(error)

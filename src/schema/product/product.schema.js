@@ -4,7 +4,7 @@ import { logger } from "../../utils/index.js";
 export const createProductTable = async () => {
   try {
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS products(
+      CREATE TABLE IF NOT EXISTS product(
         id SERIAL PRIMARY KEY,
         category_id INT REFERENCES categories(id),
         title VARCHAR,
@@ -19,7 +19,10 @@ export const createProductTable = async () => {
         updated_at TIMESTAMPTZ
       )
     `);
+    logger.info("Table yaratildi")
   } catch (error) {
-    logger.error(error);
+    logger.error(error.message);
   }
 };
+
+await createProductTable()

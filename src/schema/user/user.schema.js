@@ -7,9 +7,9 @@ export const createUserTable = async () => {
     //   CREATE TYPE USER_ROLE AS ENUM('user', 'admin', 'manager');
     // `);
 
-    await pool.query(`
-      SET TIME ZONE 'GMT+5'
-    `);
+    // await pool.query(`
+    //   SET TIME ZONE 'GMT+5'
+    // `);
 
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users(
@@ -23,11 +23,13 @@ export const createUserTable = async () => {
         birth_of_date DATE,
         phone_number VARCHAR UNIQUE NOT NULL,
         is_active BOOLEAN DEFAULT false,
-        created_at TIMESTAMPTZ,
-        updated_at TIMESTAMPTZ 
+        create_at timestamp default CURRENT_TIMESTAMP,
+        update_at timestamp default CURRENT_TIMESTAMP
       )
     `);
+    logger.info("Table yaratildi")
   } catch (error) {
-    logger.error(error);
+    logger.error(error.message);
   }
 };
+await createUserTable();

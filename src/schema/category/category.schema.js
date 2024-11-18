@@ -13,7 +13,9 @@ export const createCategoryTable = async () => {
         updated_at TIMESTAMPTZ
     )
     `);
+    logger.info("Table yaratildi")
   } catch (error) {
     logger.error(error);
   }
 };
+await createCategoryTable()
