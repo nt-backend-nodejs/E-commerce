@@ -5,7 +5,7 @@ import {
     getReviewById,
     updateReviewById,
 } from '../controllers/index.js'
-import { validationReviews } from '../validation/review.validation.js'
+import { validationReviews } from '../middlewares/index.js'
 import { authGuard, roleGuard } from '../middlewares/index.js'
 
 export const reviewRouter = Router()
