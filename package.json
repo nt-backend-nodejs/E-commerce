@@ -1,0 +1,53 @@
+{
+    "name": "e-commerce",
+    "version": "1.0.0",
+    "description": "nodejs e-commerce project",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write .",
+        "start": "node server.js",
+        "start:dev": "node --watch server.js",
+        "prepare": "husky"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    },
+    "keywords": [
+        "e-commerce",
+        "nodejs",
+        "js",
+        "postgres"
+    ],
+    "author": "khkhamidullo@gmail.com",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^9.14.0",
+        "eslint-config-node": "^4.1.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-node": "^11.1.0",
+        "globals": "^15.12.0",
+        "husky": "^9.1.6",
+        "lint-staged": "^15.2.10",
+        "prettier": "3.3.3"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
+        "jsonwebtoken": "^9.0.2",
+        "morgan": "^1.10.0",
+        "nodemailer": "^6.9.16",
+        "otp-generator": "^4.0.1",
+        "pg": "^8.13.1",
+        "winston": "^3.17.0"
+    },
+    "prettier": {
+        "trailingComma": "all",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    }
+}
