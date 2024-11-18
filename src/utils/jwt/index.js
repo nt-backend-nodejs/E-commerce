@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { logger } from "../index.js";
 import { config } from "../../config/index.js";
 
 const { sign, verify } = jwt;
@@ -24,6 +25,7 @@ export const isvalidToken = async (prop, token) => {
       success: true,
     };
   } catch (error) {
+    logger.error(error);
     if (error.message === "invalid token") {
       return {
         success: false,
