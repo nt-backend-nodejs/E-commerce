@@ -17,6 +17,17 @@ export const createReviewService = async (reviewData) => {
     }
 }
 
+export const getReviewsService = async () => {
+    try {
+        const result = await pool.query(`SELECT * FROM reviews`)
+        if (!result.rows) {
+            throw new Error('Review not found')
+        }
+        return { success: true, review: result.rows }
+    } catch (error) {
+        return { success: false, error }
+    }
+}
 export const getReviewByIdService = async (id) => {
     try {
         const result = await pool.query(`SELECT * FROM reviews WHERE id = $1`, [

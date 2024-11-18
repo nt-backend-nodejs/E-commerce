@@ -21,7 +21,7 @@ app.use(morgan('dev'))
 // auth
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/adress', addressRouter)
-app.use('/ap1/v1/review', reviewRouter)
+app.use('/api/v1/review', reviewRouter)
 app.get('/api/v1/setup', async (req, res) => {
     await createReviewsTable()
     await createUserTable(), await createAddressTable()
