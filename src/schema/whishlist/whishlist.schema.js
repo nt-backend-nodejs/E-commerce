@@ -18,4 +18,3 @@ export const createWhishlistTable = async () => {
   }
 }; 
 
-await createWhishlistTable()

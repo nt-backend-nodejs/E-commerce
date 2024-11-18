@@ -13,6 +13,7 @@ import {
   createSocProfilesTable,
   createCategoryTable,
   createProductTable,
+  createWhishlistTable
 } from "./schema/index.js";
 
 const app = express();
@@ -33,7 +34,7 @@ app.get("/api/v1/setup", async (req, res) => {
   await createSocProfilesTable();
   await createCategoryTable();
   await createProductTable();
-
+  await createWhishlistTable()
   res.send("ok");
 });
 
