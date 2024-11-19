@@ -43,7 +43,8 @@
         "nodemailer": "^6.9.16",
         "otp-generator": "^4.0.1",
         "pg": "^8.13.1",
-        "winston": "^3.17.0"
+        "winston": "^3.17.0",
+        "zod": "^3.23.8"
     },
     "prettier": {
         "trailingComma": "all",
