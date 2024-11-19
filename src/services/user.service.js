@@ -43,7 +43,7 @@ export const registerService = async (user) => {
 
     if (dataEmail.rows[0] || dataUsername.rows[0] || dataPhone_number.rows[0]) {
       return "Already exists!";
-    }  
+    }
 
     const queryString = `
       INSERT INTO users (

@@ -1,7 +1,7 @@
 import app from "./src/app.js";
-import { config } from "./src/config/index.js";
-import { logger } from "./src/utils/logger.js";
 import pool from "./src/database/index.js";
+import { config } from "./src/config/index.js";
+import { logger } from "./src/utils/index.js";
 
 const bootstrap = async () => {
   try {
@@ -11,7 +11,6 @@ const bootstrap = async () => {
 
     logger.info((await pool.query("SELECT now()")).rows);
   } catch (error) {
-    console.log(error);
     logger.error(error);
   }
 };
