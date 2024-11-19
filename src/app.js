@@ -2,6 +2,8 @@ import express from 'express'
 import morgan from 'morgan'
 import { createUserTable } from './schema/index.js'
 import { authRoutes, ordersRouter, socialFilesRouter } from './routes/index.js'
+import { createCardItemsTable, createCategoryTable, createUserTable } from './schema/index.js'
+import { authRoutes, cardItemRouter, categoryRouter } from './routes/index.js'
 import {
     createAddressTable,
     createReviewsTable,
@@ -31,11 +33,20 @@ app.use(morgan('dev'))
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/orders', ordersRouter)
 app.use('/api/v1/socialProfiles', socialFilesRouter)
+
+app.use('/api/v1/category', categoryRouter)
+app.use('/api/v1/cardItem', cardItemRouter )
+
+app.get('/api/v1/setup', async (req, res) => {
+    await createUserTable()
+    await createCategoryTable()
+    await createCardItemsTable()
 app.use('/api/v1/adress', addressRouter)
 app.use('/api/v1/review', reviewRouter)
 app.get('/api/v1/setup', async (req, res) => {
     await createReviewsTable()
     await createUserTable(), await createAddressTable()
+
 app.use('/api/v1/product', authGuard(), productsRouter)
 app.use('/api/v1/cart', authGuard(), cardRouter)
 
@@ -47,11 +58,21 @@ app.get('/api/v1/setup', async (req, res) => {
 })
 
 app.use((err, req, res, next) => {
+    logger.error('Error:', err)
+
     if (err) {
+        return res.status(err.statusCode || 400).json({
+            success: false,
+            message: err.message,
+        })
         logger.error(err)
         return res.send(err.message)
     }
-    return res.send('not found')
+
+    res.status(500).json({
+        success: false,
+        message: 'Internal Server Error',
+    })
 })
 
 export default app
