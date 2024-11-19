@@ -2,11 +2,11 @@ import { logger } from "../utils/index.js";
 import {getallwhislists,getwhistbyid,createwhislist,updatewhislist,deletewhislist} from "../services/index.js"
 export const getAllwhishlist=async(req,res)=>{
     try {
-        const result=await getAllwhishlist()
+        const result=await getallwhislists()
         res.status(200).send(result)
     } catch (error) {
-        logger.error(error)
-        res.status(400).send(error)
+        logger.error(error.message)
+        res.status(400).send(error.message)
     }
 }
 
