@@ -1,5 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
+import { createUserTable } from './schema/index.js'
+import { authRoutes, ordersRouter, socialFilesRouter } from './routes/index.js'
 import { createCardItemsTable, createCategoryTable, createUserTable } from './schema/index.js'
 import { authRoutes, cardItemRouter, categoryRouter } from './routes/index.js'
 import {
@@ -29,6 +31,8 @@ app.use(morgan('dev'))
 
 // auth
 app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/orders', ordersRouter)
+app.use('/api/v1/socialProfiles', socialFilesRouter)
 
 app.use('/api/v1/category', categoryRouter)
 app.use('/api/v1/cardItem', cardItemRouter )

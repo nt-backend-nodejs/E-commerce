@@ -1,8 +1,9 @@
 export * from './users/user.schema.js'
+export * from './orders/orders.schema.js'
+export *  from './social_profile/socialProfile.schema.js'
 
 export * from './category/category.schema.js'
 export * from './cartItem/schema.js'
-
 export * from './reviews/reviews.schema.js'
 export * from './addresses/addresses.schema.js'
 
