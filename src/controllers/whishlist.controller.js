@@ -5,7 +5,7 @@ export const getAllwhishlist=async(req,res)=>{
         const result=await getallwhislists()
         res.status(200).send(result)
     } catch (error) {
-        logger.error(error.message)
+        logger.error(error.messageq)
         res.status(400).send(error.message)
     }
 }
@@ -42,6 +42,10 @@ export const updateWhishlist=async(req,res)=>{
         logger.error(error)
         res.status(400).send(error)
     }
+    console.log("Salom Js")
+    console.log("Salom Js")
+    console.log("Salom Js")
+    console.log("Salom Js")
 }
 
 export const deleteWhishlist=async(req,res)=>{
