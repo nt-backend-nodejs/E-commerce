@@ -3,6 +3,11 @@ import morgan from 'morgan'
 import { createUserTable } from './schema/index.js'
 import { authRoutes, ordersRouter, socialFilesRouter } from './routes/index.js'
 import {
+    createAddressTable,
+    createReviewsTable,
+    createUserTable,
+} from './schema/index.js'
+import { addressRouter, authRoutes, reviewRouter } from './routes/index.js'
     createUserTable,
     creatCartTable,
     createProducrsTable,
@@ -26,6 +31,11 @@ app.use(morgan('dev'))
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/orders', ordersRouter)
 app.use('/api/v1/socialProfiles', socialFilesRouter)
+app.use('/api/v1/adress', addressRouter)
+app.use('/api/v1/review', reviewRouter)
+app.get('/api/v1/setup', async (req, res) => {
+    await createReviewsTable()
+    await createUserTable(), await createAddressTable()
 app.use('/api/v1/product', authGuard(), productsRouter)
 app.use('/api/v1/cart', authGuard(), cardRouter)
 
